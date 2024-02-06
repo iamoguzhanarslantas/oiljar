@@ -19,6 +19,7 @@ class _PickerHomePageState extends State<PickerHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Picker Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(

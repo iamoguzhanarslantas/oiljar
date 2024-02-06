@@ -18,6 +18,7 @@ class _UserHomePageState extends State<UserHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Home Page'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(

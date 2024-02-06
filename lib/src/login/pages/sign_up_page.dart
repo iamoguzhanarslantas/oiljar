@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -98,11 +100,21 @@ class _SignUpPageState extends State<SignUpPage> {
                   return;
                 }
                 if (passwordController.text.length < 6 ||
+                    emailController.text.length < 6 ||
                     usernameController.text.length < 6) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text(
-                          'Password or Username must be at least 6 characters'),
+                          'Email, Password or Username must be at least 6 characters'),
+                    ),
+                  );
+                  return;
+                }
+                if (emailController.text.contains('@') == false ||
+                    emailController.text.contains('mail.com') == false) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Email contains @ and mail.com characters'),
                     ),
                   );
                   return;
