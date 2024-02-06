@@ -27,8 +27,7 @@ class _PickerHomePageState extends State<PickerHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments;
-    debugPrint('PickerHomePage args: ${args.toString()}');
+    // final args = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Picker Home Page'),
@@ -75,11 +74,13 @@ class _PickerHomePageState extends State<PickerHomePage> {
                                   buttonTitle: 'Add Points',
                                   onPressed: () async {
                                     await Navigator.pushNamed(
-                                      context,
-                                      QRScanner.routeName,
-                                      arguments:
-                                          snapshot.data![index].id.toString(),
-                                    );
+                                        context, QRScanner.routeName,
+                                        arguments: {
+                                          'id': snapshot.data![index].id
+                                              .toString(),
+                                          'points':
+                                              pointsController.text.toString(),
+                                        });
                                   },
                                 );
                               },

@@ -123,10 +123,7 @@ class UserRepository extends IUserRepository {
   @override
   Future<void> addPoints(String id, int points) async {
     try {
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(id)
-          .update({
+      await FirebaseFirestore.instance.collection('users').doc(id).update({
         'points': FieldValue.increment(points),
       }).then(
         (value) {

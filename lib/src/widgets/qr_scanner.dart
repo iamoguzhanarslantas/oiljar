@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:oiljar/src/home/home.dart';
+import 'package:oiljar/src/services/services.dart';
 import 'package:oiljar/src/widgets/widgets.dart'
     show CustomAlertDialogWithTextButton;
 
@@ -11,7 +12,8 @@ class QRScanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     debugPrint('QRScanner args: ${args.toString()}');
     return Scaffold(
       body: MobileScanner(
@@ -35,15 +37,27 @@ class QRScanner extends StatelessWidget {
                   image: MemoryImage(image),
                 ),
                 buttonTitle: 'OK',
-                onPressed: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    PickerHomePage.routeName,
-                    (route) => false,
-                    arguments:
-                        (args.toString() == barcodes.first.rawValue.toString())
-                            ? true
-                            : false,
-                  );
+                onPressed: () async {
+                  if (args['id'].toString() ==
+                      barcodes.first.rawValue.toString()) {
+                    await UserRepository().addPoints(
+                      args['id'].toString(),
+                      int.parse(args['points']),
+                    );
+                  } else {
+                    debugPrint('Invalid QR Code');
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Invalid QR Code'),
+                      ),
+                    );
+                  }
+                  if (context.mounted) {
+                    await Navigator.of(context).pushNamedAndRemoveUntil(
+                      PickerHomePage.routeName,
+                      (route) => false,
+                    );
+                  }
                 },
               ),
             );
