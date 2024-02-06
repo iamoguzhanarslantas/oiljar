@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -147,6 +145,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     username: usernameController.text.trim(),
                     password: passwordController.text.trim(),
                     profileType: profileEnum.name,
+                    points: 0,
                   );
                   PickerModel pickerModel = PickerModel(
                     id: FirebaseAuth.instance.currentUser!.uid,

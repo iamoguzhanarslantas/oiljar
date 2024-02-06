@@ -16,6 +16,7 @@ class UserRepository extends IUserRepository {
         'username': userModel.username,
         'id': userModel.id,
         'profile': userModel.profileType,
+        'points': userModel.points,
       }).then(
         (value) => debugPrint('User Saved'),
       );
@@ -116,6 +117,24 @@ class UserRepository extends IUserRepository {
     } catch (e) {
       debugPrint(e.toString());
       return [];
+    }
+  }
+
+  @override
+  Future<void> addPoints(String id, int points) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(id)
+          .update({
+        'points': FieldValue.increment(points),
+      }).then(
+        (value) {
+          debugPrint('Points Added');
+        },
+      );
+    } catch (e) {
+      debugPrint(e.toString());
     }
   }
 }

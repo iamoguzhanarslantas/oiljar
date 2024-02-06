@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomAlertDialogWithTextButton extends StatelessWidget {
   final String title;
-  final String content;
+  final Widget content;
   final String buttonTitle;
   final void Function()? onPressed;
   const CustomAlertDialogWithTextButton({
@@ -16,8 +16,13 @@ class CustomAlertDialogWithTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text(title),
-      content: Text(content),
+      title: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 15,
+        ),
+      ),
+      content: content,
       actions: [
         TextButton(
           onPressed: onPressed,

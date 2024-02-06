@@ -6,6 +6,7 @@ class UserModel {
   final String? email;
   final String? password;
   final String? profileType;
+  final int? points;
 
   UserModel({
     this.id,
@@ -13,6 +14,7 @@ class UserModel {
     required this.email,
     required this.password,
     required this.profileType,
+    this.points,
   });
 
   UserModel copyWith({
@@ -21,6 +23,7 @@ class UserModel {
     String? email,
     String? password,
     String? profileType,
+    int? points,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -28,6 +31,7 @@ class UserModel {
       email: email ?? this.email,
       password: password ?? this.password,
       profileType: profileType ?? this.profileType,
+      points: points ?? this.points,
     );
   }
 
@@ -38,6 +42,7 @@ class UserModel {
       'email': email,
       'password': password,
       'profileType': profileType,
+      'points': points,
     };
   }
 
@@ -49,6 +54,7 @@ class UserModel {
       password: map['password'] != null ? map['password'] as String : null,
       profileType:
           map['profileType'] != null ? map['profileType'] as String : null,
+      points: map['points'] != null ? map['points'] as int : null,
     );
   }
 
@@ -59,7 +65,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, username: $username, email: $email, password: $password, profileType: $profileType)';
+    return 'UserModel(id: $id, username: $username, email: $email, password: $password, profileType: $profileType, points: $points)';
   }
 
   @override
@@ -70,7 +76,8 @@ class UserModel {
         other.username == username &&
         other.email == email &&
         other.password == password &&
-        other.profileType == profileType;
+        other.profileType == profileType &&
+        other.points == points;
   }
 
   @override
@@ -79,6 +86,7 @@ class UserModel {
         username.hashCode ^
         email.hashCode ^
         password.hashCode ^
-        profileType.hashCode;
+        profileType.hashCode ^
+        points.hashCode;
   }
 }

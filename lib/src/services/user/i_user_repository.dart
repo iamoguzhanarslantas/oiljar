@@ -8,4 +8,5 @@ abstract class IUserRepository {
   Future<void> deleteUser(UserModel userModel);
   Future<bool> checkIfUserEmailExists(TextEditingController emailController);
   Future<List<UserModel>> getAllUsers();
+  Future<void> addPoints(String id, int points);
 }
