@@ -86,12 +86,11 @@ class UserRepository extends IUserRepository {
   }
 
   @override
-  Future<bool> checkIfUserEmailExists(
-      TextEditingController emailController) async {
+  Future<bool> checkIfUserEmailExists(String? email) async {
     try {
       final result = await FirebaseFirestore.instance
           .collection('users')
-          .where('email', isEqualTo: emailController.text.trim())
+          .where('email', isEqualTo: email)
           .get();
       return result.docs.isNotEmpty;
     } catch (e) {

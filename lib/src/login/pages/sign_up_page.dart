@@ -120,9 +120,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 if (profileEnum == ProfileEnum.picker ||
                     profileEnum == ProfileEnum.user) {
                   var isPickerEmailExist = await PickerRepository()
-                      .checkIfPickerEmailExists(emailController);
+                      .checkIfPickerEmailExists(emailController.text.trim());
                   var isUserEmailExist = await UserRepository()
-                      .checkIfUserEmailExists(emailController);
+                      .checkIfUserEmailExists(emailController.text.trim());
                   if (isPickerEmailExist && context.mounted ||
                       isUserEmailExist && context.mounted) {
                     ScaffoldMessenger.of(context).showSnackBar(

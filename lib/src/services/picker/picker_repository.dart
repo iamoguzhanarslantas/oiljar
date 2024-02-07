@@ -84,12 +84,11 @@ class PickerRepository extends IPickerRepository {
   }
 
   @override
-  Future<bool> checkIfPickerEmailExists(
-      TextEditingController emailController) async {
+  Future<bool> checkIfPickerEmailExists(String? email) async {
     try {
       final result = await FirebaseFirestore.instance
           .collection('pickers')
-          .where('email', isEqualTo: emailController.text.trim())
+          .where('email', isEqualTo: email)
           .get();
       return result.docs.isNotEmpty;
     } catch (e) {

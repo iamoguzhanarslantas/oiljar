@@ -75,14 +75,16 @@ class _SignInPageState extends State<SignInPage> {
                     .then(
                   (value) async {
                     var isPickerEmailExist = await PickerRepository()
-                        .checkIfPickerEmailExists(emailController);
+                        .checkIfPickerEmailExists(emailController.text.trim());
                     var isUserEmailExist = await UserRepository()
-                        .checkIfUserEmailExists(emailController);
+                        .checkIfUserEmailExists(emailController.text.trim());
                     if (isPickerEmailExist && context.mounted) {
-                      debugPrint('Picker Email Sign In');
+                      debugPrint(
+                          'Picker Email Sign In ${emailController.text.trim()}');
                       Navigator.pushNamed(context, PickerHomePage.routeName);
                     } else if (isUserEmailExist && context.mounted) {
-                      debugPrint('User Email Sign In');
+                      debugPrint(
+                          'User Email Sign In ${emailController.text.trim()}');
                       Navigator.pushNamed(context, UserHomePage.routeName);
                     } else {
                       debugPrint('Email does not exist');

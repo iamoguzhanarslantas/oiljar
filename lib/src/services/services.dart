@@ -4,4 +4,3 @@ export 'picker/picker_repository.dart';
 export 'picker/i_picker_repository.dart';
 export 'user/user_repository.dart';
 export 'user/i_user_repository.dart';
-export 'firebase_init_service.dart';
