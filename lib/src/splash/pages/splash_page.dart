@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:oiljar/src/home/home.dart';
-import 'package:oiljar/src/login/login.dart';
-import 'package:oiljar/src/services/services.dart';
+
+import 'package:oiljar/src/home/home.dart' show PickerHomePage, UserHomePage;
+import 'package:oiljar/src/login/login.dart' show SignInPage;
+import 'package:oiljar/src/services/services.dart'
+    show AuthRepository, PickerRepository, UserRepository;
 
 class SplashPage extends StatefulWidget {
   static const String routeName = '/splash';

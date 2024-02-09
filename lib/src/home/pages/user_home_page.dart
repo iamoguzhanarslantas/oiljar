@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart' show AuthRepository;
-import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 class UserHomePage extends StatefulWidget {
   static const String routeName = '/user-home';

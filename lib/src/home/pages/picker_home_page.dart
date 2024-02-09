@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart'
     show AuthRepository, UserRepository;
-import 'package:oiljar/src/widgets/custom_alert_dialog_with_text_button.dart'
-    show CustomAlertDialogWithTextButton;
-import 'package:oiljar/src/widgets/qr_scanner.dart' show QRScanner;
+import 'package:oiljar/src/widgets/widgets.dart'
+    show CustomAlertDialogWithTextButton, QRScanner;
 
 class PickerHomePage extends StatefulWidget {
   static const String routeName = '/picker-home';

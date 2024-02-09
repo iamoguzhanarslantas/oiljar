@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:oiljar/src/home/home.dart';
-import 'package:oiljar/src/services/services.dart';
+
+import 'package:oiljar/src/home/home.dart' show PickerHomePage;
+import 'package:oiljar/src/services/services.dart' show UserRepository;
 import 'package:oiljar/src/widgets/widgets.dart'
     show CustomAlertDialogWithTextButton;
 
@@ -42,7 +43,9 @@ class QRScanner extends StatelessWidget {
                       barcodes.first.rawValue.toString()) {
                     await UserRepository().addPoints(
                       args['id'].toString(),
-                      int.parse(args['points']),
+                      int.parse(
+                        args['points'],
+                      ),
                     );
                   } else {
                     debugPrint('Invalid QR Code');
