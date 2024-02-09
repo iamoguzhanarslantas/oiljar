@@ -38,13 +38,13 @@ class _SignInPageState extends State<SignInPage> {
           children: [
             CustomTextField(
               controller: emailController,
-              icon: Icons.email,
+              prefix: const Icon(Icons.email),
               isPasswordType: false,
               labeltext: 'Email',
             ),
             CustomTextField(
               controller: passwordController,
-              icon: Icons.lock,
+              prefix: const Icon(Icons.lock),
               isPasswordType: true,
               labeltext: 'Password',
             ),
@@ -99,7 +99,7 @@ class _SignInPageState extends State<SignInPage> {
                   );
                 });
               },
-              text: 'Sign In',
+              child: const Text('Sign In'),
             ),
             SignUpOption(
               text: 'Don\'t have an account?',

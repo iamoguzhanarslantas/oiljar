@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   final String labeltext;
-  final IconData icon;
+  final Widget prefix;
   final bool isPasswordType;
   final TextEditingController controller;
   const CustomTextField({
     Key? key,
     required this.labeltext,
-    required this.icon,
+    required this.prefix,
     required this.isPasswordType,
     required this.controller,
   }) : super(key: key);
@@ -26,7 +26,7 @@ class CustomTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         labelText: labeltext,
-        prefix: Icon(icon),
+        prefix: prefix,
         labelStyle: const TextStyle(
           color: Colors.blue,
         ),

@@ -6,7 +6,7 @@ import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart'
     show PickerRepository, UserRepository;
 
-Future<void> loginUser(
+Future<void> loginRouter(
     {required User? user, required BuildContext context}) async {
   var isPickerEmailExist =
       await PickerRepository().checkIfPickerEmailExists(user?.email);
@@ -22,6 +22,6 @@ Future<void> loginUser(
     debugPrint('User Email Sign In');
     await Navigator.pushReplacementNamed(context, UserHomePage.routeName);
   } else {
-    debugPrint('Email does not existtt');
+    debugPrint('Email does not exist');
   }
 }

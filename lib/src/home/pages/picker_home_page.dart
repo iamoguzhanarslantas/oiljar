@@ -5,7 +5,7 @@ import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart'
     show AuthRepository, UserRepository;
 import 'package:oiljar/src/widgets/widgets.dart'
-    show CustomAlertDialogWithTextButton;
+    show CustomAlertDialogWithTextButton, CustomElevatedButton;
 
 class PickerHomePage extends StatefulWidget {
   static const String routeName = '/picker-home';
@@ -27,7 +27,6 @@ class _PickerHomePageState extends State<PickerHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final args = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Picker Home Page'),
@@ -72,7 +71,7 @@ class _PickerHomePageState extends State<PickerHomePage> {
                                       ),
                                     ],
                                   ),
-                                  buttonTitle: 'Add Points',
+                                  child: const Text('Scan QR Code'),
                                   onPressed: () async {
                                     await Navigator.pushNamed(
                                         context, QRScanner.routeName,
@@ -113,7 +112,7 @@ class _PickerHomePageState extends State<PickerHomePage> {
               ),
             ),
             Text('Welcome ${user!.email}'),
-            ElevatedButton(
+            CustomElevatedButton(
               child: const Text('Sign Out'),
               onPressed: () {
                 AuthRepository().signOut().then(

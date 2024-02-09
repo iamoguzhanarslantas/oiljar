@@ -37,7 +37,7 @@ class QRScanner extends StatelessWidget {
                 content: Image(
                   image: MemoryImage(image),
                 ),
-                buttonTitle: 'OK',
+                child: const Text('Add Points'),
                 onPressed: () async {
                   if (args['id'].toString() ==
                       barcodes.first.rawValue.toString()) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:oiljar/src/home/home.dart' show PickerHomePage, UserHomePage;
+import 'package:oiljar/src/home/home.dart'
+    show PickerHomePage, QRScanner, UserHomePage;
 import 'package:oiljar/src/login/login.dart' show SignInPage, SignUpPage;
 import 'package:oiljar/src/splash/splash.dart' show SplashPage;
-import 'package:oiljar/src/home/widgets/qr_scanner.dart' show QRScanner;
 
 class App extends StatelessWidget {
   const App({super.key});

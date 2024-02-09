@@ -45,19 +45,19 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             CustomTextField(
               controller: usernameController,
-              icon: Icons.person,
+              prefix: const Icon(Icons.person),
               isPasswordType: false,
               labeltext: 'Username',
             ),
             CustomTextField(
               controller: emailController,
-              icon: Icons.email,
+              prefix: const Icon(Icons.email),
               isPasswordType: false,
               labeltext: 'Email',
             ),
             CustomTextField(
               controller: passwordController,
-              icon: Icons.lock,
+              prefix: const Icon(Icons.lock),
               isPasswordType: true,
               labeltext: 'Password',
             ),
@@ -178,7 +178,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       SignInPage.routeName, (route) => false);
                 });
               },
-              text: 'Sign Up',
+              child: const Text('Sign Up'),
             ),
           ],
         ),

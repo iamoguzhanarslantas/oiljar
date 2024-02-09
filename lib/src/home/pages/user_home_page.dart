@@ -33,9 +33,7 @@ class _UserHomePageState extends State<UserHomePage> {
       data: user!.uid,
       errorCorrectLevel: QrErrorCorrectLevel.H,
     );
-
     qrImage = QrImage(qrCode);
-
     qrDecoration = const PrettyQrDecoration(
         shape: PrettyQrSmoothSymbol(color: Colors.black));
   }
@@ -68,7 +66,7 @@ class _UserHomePageState extends State<UserHomePage> {
               ),
             ),
             CustomElevatedButton(
-              text: 'Sign Out',
+              child: const Text('Sign Out'),
               onPressed: () {
                 AuthRepository().signOut().then(
                       (value) => Navigator.pushNamedAndRemoveUntil(

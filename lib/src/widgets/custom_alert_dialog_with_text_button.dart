@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class CustomAlertDialogWithTextButton extends StatelessWidget {
   final String title;
   final Widget content;
-  final String buttonTitle;
-  final void Function()? onPressed;
+  final Widget child;
+  final void Function() onPressed;
   const CustomAlertDialogWithTextButton({
     super.key,
     required this.title,
     required this.content,
-    required this.buttonTitle,
+    required this.child,
     required this.onPressed,
   });
 
@@ -26,7 +26,7 @@ class CustomAlertDialogWithTextButton extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: onPressed,
-          child: Text(buttonTitle),
+          child: child,
         ),
       ],
     );
