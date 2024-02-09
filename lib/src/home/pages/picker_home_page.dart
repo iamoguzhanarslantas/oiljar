@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:oiljar/src/home/home.dart' show HomePagesDrawer, QRScanner;
 import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart'
     show AuthRepository, UserRepository;
 import 'package:oiljar/src/widgets/widgets.dart'
-    show CustomAlertDialogWithTextButton, QRScanner;
+    show CustomAlertDialogWithTextButton;
 
 class PickerHomePage extends StatefulWidget {
   static const String routeName = '/picker-home';
@@ -30,8 +31,9 @@ class _PickerHomePageState extends State<PickerHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Picker Home Page'),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
+      drawer: const HomePagesDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

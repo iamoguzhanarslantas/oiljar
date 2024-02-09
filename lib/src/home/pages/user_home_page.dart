@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
+import 'package:oiljar/src/home/home.dart' show HomePagesDrawer;
 import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart' show AuthRepository;
+import 'package:oiljar/src/widgets/widgets.dart' show CustomElevatedButton;
 
 class UserHomePage extends StatefulWidget {
   static const String routeName = '/user-home';
@@ -43,8 +45,9 @@ class _UserHomePageState extends State<UserHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('User Home Page'),
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
       ),
+      drawer: const HomePagesDrawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -64,8 +67,8 @@ class _UserHomePageState extends State<UserHomePage> {
                 decoration: qrDecoration,
               ),
             ),
-            ElevatedButton(
-              child: const Text('Sign Out'),
+            CustomElevatedButton(
+              text: 'Sign Out',
               onPressed: () {
                 AuthRepository().signOut().then(
                       (value) => Navigator.pushNamedAndRemoveUntil(

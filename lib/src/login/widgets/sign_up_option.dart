@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class CustomSignUpOption extends StatelessWidget {
+class SignUpOption extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
   final String buttonText;
-  const CustomSignUpOption({
+  const SignUpOption({
     super.key,
     required this.text,
     this.onPressed,

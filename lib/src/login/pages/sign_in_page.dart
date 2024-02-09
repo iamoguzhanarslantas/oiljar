@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:oiljar/src/home/home.dart' show PickerHomePage, UserHomePage;
-import 'package:oiljar/src/login/login.dart' show SignUpPage;
+import 'package:oiljar/src/login/login.dart' show SignUpOption, SignUpPage;
 import 'package:oiljar/src/services/services.dart'
     show AuthRepository, PickerRepository, UserRepository;
 import 'package:oiljar/src/widgets/widgets.dart'
-    show CustomElevatedButton, CustomSignUpOption, CustomTextField;
+    show CustomElevatedButton, CustomTextField;
 
 class SignInPage extends StatefulWidget {
   static const String routeName = '/sign-in';
@@ -101,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
               },
               text: 'Sign In',
             ),
-            CustomSignUpOption(
+            SignUpOption(
               text: 'Don\'t have an account?',
               onPressed: () {
                 Navigator.push(
