@@ -1,13 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:oiljar/firebase_options.dart' show DefaultFirebaseOptions;
 import 'package:oiljar/src/app.dart' show App;
+import 'package:oiljar/src/utils/utils.dart' show AppStart;
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+void main() async {
+  await AppStart().initApp();
   runApp(const App());
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart' show AuthRepository;
+import 'package:oiljar/src/widgets/widgets.dart' show CustomElevatedButton;
 
 class HomePagesDrawer extends StatefulWidget {
   const HomePagesDrawer({
@@ -34,7 +36,7 @@ class _HomePagesDrawerState extends State<HomePagesDrawer> {
                     child: Icon(Icons.person),
                   ),
                   title: user!.email != null
-                      ? Text(user!.email!.split('@').first)
+                      ? Text('Welcome ${user!.email!.split('@').first}')
                       : const Text('Guest'),
                   subtitle: user!.email != null
                       ? Text(
@@ -58,6 +60,18 @@ class _HomePagesDrawerState extends State<HomePagesDrawer> {
             title: const Text('Item 2'),
             onTap: () {
               Navigator.pop(context);
+            },
+          ),
+          CustomElevatedButton(
+            child: const Text('Sign Out'),
+            onPressed: () {
+              AuthRepository().signOut().then(
+                    (value) => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      SignInPage.routeName,
+                      (route) => false,
+                    ),
+                  );
             },
           ),
         ],

@@ -21,9 +21,6 @@ class SignUpOption extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             buttonText,
-            style: const TextStyle(
-              color: Colors.blue,
-            ),
           ),
         ),
       ],

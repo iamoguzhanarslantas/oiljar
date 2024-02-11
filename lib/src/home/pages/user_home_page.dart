@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import 'package:oiljar/src/home/home.dart' show HomePagesDrawer;
-import 'package:oiljar/src/login/login.dart' show SignInPage;
 import 'package:oiljar/src/services/services.dart' show AuthRepository;
-import 'package:oiljar/src/widgets/widgets.dart' show CustomElevatedButton;
 
 class UserHomePage extends StatefulWidget {
   static const String routeName = '/user-home';
@@ -48,7 +46,9 @@ class _UserHomePageState extends State<UserHomePage> {
       drawer: const HomePagesDrawer(),
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (user != null)
               Column(
@@ -58,24 +58,12 @@ class _UserHomePageState extends State<UserHomePage> {
                 ],
               ),
             SizedBox(
-              width: 200,
-              height: 200,
+              width: MediaQuery.of(context).size.width / 2,
+              height: MediaQuery.of(context).size.width / 2,
               child: PrettyQrView(
                 qrImage: qrImage,
                 decoration: qrDecoration,
               ),
-            ),
-            CustomElevatedButton(
-              child: const Text('Sign Out'),
-              onPressed: () {
-                AuthRepository().signOut().then(
-                      (value) => Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        SignInPage.routeName,
-                        (route) => false,
-                      ),
-                    );
-              },
             ),
           ],
         ),

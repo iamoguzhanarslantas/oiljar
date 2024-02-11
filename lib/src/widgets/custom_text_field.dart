@@ -20,22 +20,14 @@ class CustomTextField extends StatelessWidget {
       obscureText: isPasswordType,
       enableSuggestions: !isPasswordType,
       autocorrect: !isPasswordType,
-      cursorColor: Colors.blue,
-      style: const TextStyle(
-        color: Colors.blue,
-      ),
       decoration: InputDecoration(
         labelText: labeltext,
         prefix: prefix,
-        labelStyle: const TextStyle(
-          color: Colors.blue,
-        ),
         filled: true,
         floatingLabelBehavior: FloatingLabelBehavior.never,
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(10)),
           borderSide: BorderSide(
-            color: Colors.blue,
             width: 2,
           ),
         ),
