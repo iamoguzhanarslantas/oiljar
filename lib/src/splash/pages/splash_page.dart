@@ -27,8 +27,8 @@ class _SplashPageState extends State<SplashPage> {
               child: Text('Connection state none'),
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: Image.asset('assets/lottie/oil_money.gif'),
             );
           } else if (snapshot.connectionState == ConnectionState.active) {
             loginRouter(user: user, context: context);
@@ -37,8 +37,8 @@ class _SplashPageState extends State<SplashPage> {
               child: Text('Connection state done'),
             );
           }
-          return const Center(
-            child: CircularProgressIndicator(),
+          return Center(
+            child: Image.asset('assets/lottie/oil_money.gif'),
           );
         },
       ),
