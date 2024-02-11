@@ -13,6 +13,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         useMaterial3: true,
+        primaryColor: Colors.blue[900],
       ),
       debugShowCheckedModeBanner: false,
       initialRoute: SplashPage.routeName,

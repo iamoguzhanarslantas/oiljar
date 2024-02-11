@@ -19,28 +19,31 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder(
-        stream: streamUser,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.none) {
-            return const Center(
-              child: Text('Connection state none'),
-            );
-          } else if (snapshot.connectionState == ConnectionState.waiting) {
+      body: Container(
+        color: Theme.of(context).primaryColor,
+        child: StreamBuilder(
+          stream: streamUser,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.none) {
+              return const Center(
+                child: Text('Connection state none'),
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Image.asset('assets/lottie/oil_money.gif'),
+              );
+            } else if (snapshot.connectionState == ConnectionState.active) {
+              loginRouter(user: user, context: context);
+            } else if (snapshot.connectionState == ConnectionState.done) {
+              return const Center(
+                child: Text('Connection state done'),
+              );
+            }
             return Center(
               child: Image.asset('assets/lottie/oil_money.gif'),
             );
-          } else if (snapshot.connectionState == ConnectionState.active) {
-            loginRouter(user: user, context: context);
-          } else if (snapshot.connectionState == ConnectionState.done) {
-            return const Center(
-              child: Text('Connection state done'),
-            );
-          }
-          return Center(
-            child: Image.asset('assets/lottie/oil_money.gif'),
-          );
-        },
+          },
+        ),
       ),
     );
   }
