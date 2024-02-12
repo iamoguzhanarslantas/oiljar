@@ -4,6 +4,7 @@ import 'package:oiljar/src/home/home.dart'
     show PickerHomePage, QRScanner, UserHomePage;
 import 'package:oiljar/src/login/login.dart' show SignInPage, SignUpPage;
 import 'package:oiljar/src/splash/splash.dart' show SplashPage;
+import 'package:oiljar/src/utils/utils.dart' show AppThemes;
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -11,10 +12,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        primaryColor: Colors.blue[900],
-      ),
+      theme: AppThemes.theme,
       debugShowCheckedModeBanner: false,
       initialRoute: SplashPage.routeName,
       routes: {
