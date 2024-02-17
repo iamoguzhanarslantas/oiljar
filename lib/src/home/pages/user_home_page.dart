@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pretty_qr_code/pretty_qr_code.dart';
 
 import 'package:oiljar/src/home/home.dart' show HomePagesDrawer;
-import 'package:oiljar/src/services/services.dart' show AuthRepository;
+import 'package:oiljar/src/services/services.dart'
+    show AuthRepository, UserRepository;
 
 class UserHomePage extends StatefulWidget {
   static const String routeName = '/user-home';
@@ -45,27 +46,51 @@ class _UserHomePageState extends State<UserHomePage> {
       ),
       drawer: const HomePagesDrawer(),
       body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            if (user != null)
-              Column(
+        child: FutureBuilder(
+          future: UserRepository().getPoints(user!.uid),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            } else if (snapshot.hasData) {
+              return Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('Welcome ${user!.email}'),
-                  Text(user!.uid),
+                  if (user != null)
+                    Column(
+                      children: [
+                        Text('Welcome ${user!.email}'),
+                        Text('Points: ${snapshot.data}'),
+                      ],
+                    ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.width / 2,
+                    child: PrettyQrView(
+                      qrImage: qrImage,
+                      decoration: qrDecoration,
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/campaigns',
+                          arguments: snapshot.data);
+                    },
+                    child: const Text('Campaigns'),
+                  ),
                 ],
-              ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 2,
-              height: MediaQuery.of(context).size.width / 2,
-              child: PrettyQrView(
-                qrImage: qrImage,
-                decoration: qrDecoration,
-              ),
-            ),
-          ],
+              );
+            } else {
+              return const Center(
+                child: Text('There is no data'),
+              );
+            }
+          },
         ),
       ),
     );

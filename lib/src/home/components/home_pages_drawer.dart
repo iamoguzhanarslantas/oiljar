@@ -50,18 +50,6 @@ class _HomePagesDrawerState extends State<HomePagesDrawer> {
               ],
             ),
           ),
-          ListTile(
-            title: const Text('Item 1'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('Item 2'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
           CustomElevatedButton(
             child: const Text('Sign Out'),
             onPressed: () {

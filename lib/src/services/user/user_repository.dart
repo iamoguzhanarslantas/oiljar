@@ -133,4 +133,25 @@ class UserRepository extends IUserRepository {
       debugPrint(e.toString());
     }
   }
+
+  @override
+  Future<int?> getPoints(String id) async {
+    try {
+      var documentSnapshot =
+          await FirebaseFirestore.instance.collection('users').doc(id).get();
+
+      if (documentSnapshot.exists) {
+        debugPrint('Points Getted');
+        debugPrint(documentSnapshot.data().toString());
+        final result = documentSnapshot.data()!.entries.firstWhere(
+              (element) => element.key == 'points',
+            );
+        print(result.value as int?);
+        return result.value as int?;
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+    return null;
+  }
 }

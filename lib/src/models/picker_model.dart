@@ -9,10 +9,10 @@ class PickerModel {
 
   PickerModel({
     this.id,
-    required this.username,
-    required this.email,
-    required this.password,
-    required this.profileType,
+    this.username,
+    this.email,
+    this.password,
+    this.profileType,
   });
 
   PickerModel copyWith({

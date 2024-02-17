@@ -8,4 +8,5 @@ abstract class IUserRepository {
   Future<bool> checkIfUserEmailExists(String email);
   Future<List<UserModel>> getAllUsers();
   Future<void> addPoints(String id, int points);
+  Future<void> getPoints(String id);
 }

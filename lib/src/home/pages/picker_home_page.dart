@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:oiljar/src/home/home.dart' show HomePagesDrawer, QRScanner;
-import 'package:oiljar/src/services/services.dart'
-    show AuthRepository, UserRepository;
+import 'package:oiljar/src/services/services.dart' show UserRepository;
 import 'package:oiljar/src/widgets/widgets.dart'
     show CustomAlertDialogWithTextButton;
 
@@ -15,7 +14,6 @@ class PickerHomePage extends StatefulWidget {
 }
 
 class _PickerHomePageState extends State<PickerHomePage> {
-  final user = AuthRepository().getCurrentUser();
   TextEditingController pointsController = TextEditingController();
 
   @override
@@ -41,7 +39,7 @@ class _PickerHomePageState extends State<PickerHomePage> {
             );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
-          } else {
+          } else if (snapshot.hasData) {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
@@ -98,6 +96,10 @@ class _PickerHomePageState extends State<PickerHomePage> {
                   ),
                 );
               },
+            );
+          } else {
+            return const Center(
+              child: Text('There is no data'),
             );
           }
         },
