@@ -62,12 +62,11 @@ class _UserHomePageState extends State<UserHomePage> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   if (user != null)
-                    Column(
-                      children: [
-                        Text('Welcome ${user!.email}'),
-                        Text('Points: ${snapshot.data}'),
-                      ],
+                    Text(
+                      'Your Points: ${snapshot.data}',
+                      style: const TextStyle(fontSize: 20),
                     ),
+                  const SizedBox(height: 20),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 2,
                     height: MediaQuery.of(context).size.width / 2,
@@ -76,10 +75,13 @@ class _UserHomePageState extends State<UserHomePage> {
                       decoration: qrDecoration,
                     ),
                   ),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/campaigns',
-                          arguments: snapshot.data);
+                      Navigator.pushNamed(context, '/campaigns', arguments: {
+                        'points': snapshot.data,
+                        'id': user!.uid
+                      });
                     },
                     child: const Text('Campaigns'),
                   ),

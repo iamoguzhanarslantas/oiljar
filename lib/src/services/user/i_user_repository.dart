@@ -9,4 +9,5 @@ abstract class IUserRepository {
   Future<List<UserModel>> getAllUsers();
   Future<void> addPoints(String id, int points);
   Future<void> getPoints(String id);
+  Future<void> updatePoints(String id, int lastPoints);
 }

@@ -146,12 +146,26 @@ class UserRepository extends IUserRepository {
         final result = documentSnapshot.data()!.entries.firstWhere(
               (element) => element.key == 'points',
             );
-        print(result.value as int?);
         return result.value as int?;
       }
     } catch (e) {
       debugPrint(e.toString());
     }
     return null;
+  }
+
+  @override
+  Future<void> updatePoints(String id, int lastPoints) async {
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(id).update({
+        'points': FieldValue.increment(-lastPoints),
+      }).then(
+        (value) {
+          debugPrint('Points Updated');
+        },
+      );
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }
