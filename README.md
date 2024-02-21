@@ -1,16 +1,29 @@
-# oiljar
+# OilJar
 
-A new Flutter project.
+## Run Locally
 
-## Getting Started
+Clone the project
 
-This project is a starting point for a Flutter application.
+```bash
+git clone (https://github.com/iamoguzhanarslantas/oiljar.git)
+```
 
-A few resources to get you started if this is your first Flutter project:
+Go to the project directory and get third part packages
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+flutter pub get
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tech Stack
+
+**Dependencies:** Flutter/Dart, Firebase, Pretty QR Code, Mobile Scanner, Flutter Native Splash
+
+## Technical Features
+
+- Layer-First (Project Structure)
+
+## IDE Version
+
+- Flutter version 3.16.9 on channel stable
+- Dart version 3.2.6
+- DevTools 2.28.5
